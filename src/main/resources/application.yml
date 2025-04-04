@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: aws-secret-version-three-demo
+  config:
+    import: aws-secretsmanager:/secret/application-dev;
+  cloud:
+    aws:
+      secretsmanager:
+        enabled: true
+        endpoint:
+        region:
+my_user: ${secretuser}
+my_password: ${secretpassword}
