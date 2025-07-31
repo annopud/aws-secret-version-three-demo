@@ -9,5 +9,28 @@ spring:
         enabled: true
         endpoint:
         region:
-my_user: ${secretuser}
-my_password: ${secretpassword}
+    cloud:
+      aws:
+        secretsmanager:
+          reload:
+            period: 2s
+            max-wait-time-for-restart: 2s
+
+management:
+  endpoint:
+    restart:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+myconfig:
+  eapi:
+    user: ${secretuser}
+    password: ${secretpassword}
+    region: testregionddddddddddddfffff
+
+
+
+

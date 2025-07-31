@@ -4,14 +4,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication
+@EnableConfigurationProperties(MyConfig2.class)
+@ConfigurationPropertiesScan(basePackages = "dev.annopud.aws_secret_version_three_demo.config")
 public class AwsSecretVersionThreeDemoApplication implements CommandLineRunner {
 
-	@Value("${my_user}")
+	@Value("${myconfig.user:default}")
 	private String user;
 
-	@Value("${my_password}")
+	@Value("${myconfig.password:default}")
 	private String password;
 
 	public static void main(String[] args) {
